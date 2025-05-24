@@ -28,7 +28,7 @@ int main(void)
 	sf::Texture backgroundTexture;
 	if(not backgroundTexture.loadFromFile("./background.jpg"))
 	{
-		std::cerr << "Nie udało się załadować tła!" << std::endl;
+		std::cerr << "backgroung loading failed!\n";
 		
 		return -1;
 	}
