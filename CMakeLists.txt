@@ -1,5 +1,5 @@
 # CMakeLists.txt for solarSim
-# 16-04-2025 by madpl and OpenAI Wolfram
+# 16-04-2025 by madpl
 
 cmake_minimum_required(VERSION 4.0.1)
 project(solarSim)
