@@ -55,7 +55,7 @@ int main(void)
 	
 	dispatcher.subscribe(sf::Event::MouseButtonPressed, [&](const sf::Event& e)
 	{
-		// Tu można dodać przyszłą obsługę kliknięć
+		// here you can add future click service
 	});
 	
 	std::vector<Body> bodies = {
