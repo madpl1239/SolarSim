@@ -13,6 +13,7 @@
 #include "defines.hpp"
 #include "body.hpp"
 #include "myGui.hpp"
+#include "eventDispatcher.hpp"
 
 
 int main(void)
@@ -45,7 +46,18 @@ int main(void)
 	backgroundSprite.setScale(scaleX, scaleY);
 
 	myGui gui(window ,SliderSizeX, SliderSizeY, SliderDistY);
-
+	EventDispatcher dispatcher;
+	
+	dispatcher.subscribe(sf::Event::Closed, [&](const sf::Event& e)
+	{
+		window.close();
+	});
+	
+	dispatcher.subscribe(sf::Event::MouseButtonPressed, [&](const sf::Event& e)
+	{
+		// Tu można dodać przyszłą obsługę kliknięć
+	});
+	
 	std::vector<Body> bodies = {
 		{"Sun", 1.989e30, {0, 0}, {0, 0}, 12, sf::Color(255, 223, 0)},
 		{"Mercury", 3.285e23, {5.7e10, 0}, {0, 4.79e4}, 4, sf::Color(216, 191, 216)},
@@ -64,9 +76,7 @@ int main(void)
 		while(window.pollEvent(event))
 		{
 			gui.handleEvent(event);
-			
-			if(event.type == sf::Event::Closed)
-				window.close();
+			dispatcher.dispatch(event);
 		}
 		
 		float guiZoom = gui.getZoomSlider()->getValue();
