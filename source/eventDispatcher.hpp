@@ -28,9 +28,7 @@ public:
 		if(it != m_listeners.end())
 		{
 			for(const auto& callback : it->second)
-			{
 				callback(event);
-			}
 		}
 	}
 	
